@@ -88,5 +88,23 @@ function closeProductDetails() {
   selectedProduct = null;
 }
 
+$: sortProducts();
+  $: searchProducts();
+</script>
 
+<div class="grid justify-center">
+  <div class="mb-4">
+    <select on:change={handleCategoryChange} class="p-2 border rounded">
+      {#each categories as category}
+        <option value={category}>{category}</option>
+      {/each}
+    </select>
+    <input 
+      type="text" 
+      placeholder="Search products" 
+      bind:value={searchTerm} 
+      on:input={handleSearch}
+      class="p-2 border rounded ml-2"
+    />
+  </div>
 
