@@ -70,4 +70,9 @@ onMount(async () => {
   }
 });
 
+function handleCategoryChange(event) {
+  filterItem.set(event.target.value);
+  fetchProducts();
+}
+
 
