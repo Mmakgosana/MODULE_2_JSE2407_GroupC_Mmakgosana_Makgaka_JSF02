@@ -75,4 +75,9 @@ function handleCategoryChange(event) {
   fetchProducts();
 }
 
+function handleSearch(event) {
+  searchTerm = event.target.value;
+  searchProducts();
+}
+
 
