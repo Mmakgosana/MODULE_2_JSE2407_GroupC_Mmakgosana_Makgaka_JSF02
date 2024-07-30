@@ -13,3 +13,25 @@ let products = writable([]);
   let loading = writable(false);
   let error = writable(false);
 
+  const fetchProducts = async () => {
+    let url = $filterItem !== "All categories" 
+      ? `https://fakestoreapi.com/products/category/${$filterItem}`
+      : 'https://fakestoreapi.com/products';
+
+    try {
+      loading.set(true);
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Data fetching failed, please check your network connection");
+      }
+      const data = await response.json();
+      originalProducts = JSON.parse(JSON.stringify(data));
+      products.set(data);
+    } catch (err) {
+      error.set(err);
+    } finally {
+      loading.set(false);
+      sortProducts();
+      searchProducts();
+    }
+  };
