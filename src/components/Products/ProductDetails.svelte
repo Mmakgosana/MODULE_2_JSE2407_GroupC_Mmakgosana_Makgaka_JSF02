@@ -57,4 +57,17 @@ const searchProducts = () => {
   }
 };
 
+onMount(async () => {
+  await fetchProducts();
+
+  // Fetch categories
+  try {
+    const response = await fetch('https://fakestoreapi.com/products/categories');
+    const fetchedCategories = await response.json();
+    categories = ["All categories", ...fetchedCategories];
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+});
+
 
