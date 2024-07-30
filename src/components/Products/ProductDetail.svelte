@@ -21,6 +21,15 @@
         loading.set(false);
       }
     });
+
+    // Function to add the product to the cart
+  function addToCart() {
+    product.subscribe(value => {
+      if (value) {
+        cart.update(items => [...items, value]);
+      }
+    });
+  }
   </script>
   
   {#if $loading}
@@ -47,11 +56,19 @@
         <span>{$product.rating.rate} ({$product.rating.count} reviews)</span>
       </div>
       <p class="mb-4">{$product.description}</p>
-      <button 
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        on:click={() => history.back()}
-      >
-        Back to Products
-      </button>
+      <div class="flex space-x-4">
+        <button 
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          on:click={addToCart}
+        >
+          Add to Cart
+        </button>
+        <button 
+          class="bg-red-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          on:click={() => history.back()}
+        >
+          Back to Products
+        </button>
+      </div>
     </div>
   {/if}
