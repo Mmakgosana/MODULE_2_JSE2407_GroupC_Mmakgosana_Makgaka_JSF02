@@ -80,4 +80,13 @@ function handleSearch(event) {
   searchProducts();
 }
 
+function showProductDetails(product) {
+  selectedProduct = product;
+}
+
+function closeProductDetails() {
+  selectedProduct = null;
+}
+
+
 
