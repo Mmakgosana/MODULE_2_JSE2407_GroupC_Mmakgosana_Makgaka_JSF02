@@ -46,3 +46,15 @@ const sortProducts = () => {
   }
 };
 
+const searchProducts = () => {
+  if (searchTerm.trim() !== "") {
+    const filteredProducts = originalProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    products.set(JSON.parse(JSON.stringify(filteredProducts)));
+  } else {
+    products.set(JSON.parse(JSON.stringify(originalProducts)));
+  }
+};
+
+
