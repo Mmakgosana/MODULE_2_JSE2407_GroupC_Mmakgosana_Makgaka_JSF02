@@ -31,7 +31,7 @@
     <div class="max-w-2xl mx-auto p-4">
       <h1 class="text-2xl font-bold mb-4">{$product.title}</h1>
       <img src={$product.image} alt={$product.title} class="w-1/2 mx-auto mb-4" />
-      <p class="mb-2"><strong>Price:</strong> R{$product.price}</p>
+      <p class="mb-2"><strong>Price:</strong> ${$product.price}</p>
       <p class="mb-2"><strong>Category:</strong> {$product.category}</p>
       <div class="flex items-center mb-2">
         <svg

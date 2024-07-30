@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
-  import {navigate} from 'svelte-routing'
+  import { navigate } from 'svelte-routing';
 
   let products = writable([]);
   let originalProducts = [];
@@ -80,13 +80,10 @@
     searchProducts();
   }
 
-  // function showProductDetails(product) {
-  //   selectedProduct = product;
-  // }
-
-  // function closeProductDetails() {
-  //   selectedProduct = null;
-  // }
+  function handleSortChange(event) {
+    sorting.set(event.target.value);
+    sortProducts();
+  }
 
   $: sortProducts();
   $: searchProducts();
@@ -94,8 +91,7 @@
   const stars = Array(5).fill(0);
 
   function clickedProduct(product) {
-    navigate(`/products/${product.id}`)
-    // showProductDetails(product)
+    navigate(`/products/${product.id}`);
   }
 </script>
 
@@ -113,13 +109,18 @@
       on:input={handleSearch}
       class="p-2 border rounded ml-2"
     />
+    <select on:change={handleSortChange} class="p-2 border rounded ml-2">
+      <option value="default">Sort by</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
   </div>
 
   <ul class="lg:max-h-[130rem] max-w-xl mx-auto grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 items-center lg:max-w-none my-4">
     {#each $products as product (product.id)}
       <li 
         class="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden"
-        on:click ={() => clickedProduct(product)}
+        on:click={() => clickedProduct(product)}
       >
         <img src={product.image} alt={product.title} class="object-contain h-48 mt-3" />
 
@@ -134,7 +135,7 @@
             </header>
             <div class="mx-auto w-[90%] space-y-2">
               <h2 class="text-base line-clamp-2 font-extrabold text-slate-500 leading-snug">
-                R{product.price}
+                ${product.price}
               </h2>
               <p class="text-sm text-slate-500">Rating: {product.rating.rate} ({product.rating.count} reviews)</p>
               <div class="flex items-center mb-2">
@@ -177,4 +178,3 @@
     {/each}
   </ul>
 </div>
-
