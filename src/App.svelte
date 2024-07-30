@@ -1,18 +1,15 @@
 <script>
-     import { Router, Route, Link } from "svelte-routing";
+     //import { Router, Route, Link } from "svelte-routing";
     // import Home from "./routes/Home.svelte";
     import Header from './components/Header.svelte'
     import Layout from './components/Layout.svelte'
-    import Filter from './components/Filter.svelte'
     import Sort from './components/Sort.svelte'
-    import CardSkeleton from './components/Products/CardSkeleton.svelte';
-    //import ProductCard from './components/Products/ProductCard.svelte';
-    //import ProductDetails from './components/Products/ProductDetails.svelte';
-    import productStore from './components/ProductStore.svelte'
     import ProductDetails from './components/Products/ProductDetails.svelte'
-    
+    import {Router, Route} from "svelte-routing"
+    import ProductDetail from './components/Products/ProductDetail.svelte'
     
     // export let url = "";
+    
 </script>
 
 <style lang="postcss">
@@ -22,14 +19,16 @@
 
 </style>
 
+<Router>
+        <Header />
+    
+    <Route path="/" component={ProductDetails} />
+    <Route path="/products/:id" component={ ProductDetail}/>
+</Router>
 
+<!-- <Header /> -->
+<!-- <Sort /> -->
 
-<Header />
-<Filter />
-<Sort />
-<Layout />
-<CardSkeleton />
-<ProductDetails/>
 
 
 

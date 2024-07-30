@@ -1,13 +1,30 @@
-<div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
-    <label for="sort" class="w-20 my-auto font-semibold">
-        Sort by:
-    </label>
-    <select
-      id="sort"
-      class="p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-    >
-      <option value="default">Default</option>
-      <option value="low">Price: Low to High</option>
-      <option value="high">Price: High to Low</option>
-    </select>
-  </div>
+<script>
+  import { sortOption } from '../components/Store';
+
+  export let onSort;
+
+  function handleSort(event) {
+    sortOption.set(event.target.value);
+    onSort(event.target.value);
+  }
+</script>
+
+<style>
+  .sort-container {
+    margin-bottom: 1rem;
+  }
+  select {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #D1D5DB;
+  }
+</style>
+
+<div class="sort-container">
+  <label for="sort-select">Sort by: </label>
+  <select id="sort-select" bind:value={$sortOption} on:change={handleSort}>
+    <option value="default">Default</option>
+    <option value="low-to-high">Price: Low to High</option>
+    <option value="high-to-low">Price: High to Low</option>
+  </select>
+</div>
