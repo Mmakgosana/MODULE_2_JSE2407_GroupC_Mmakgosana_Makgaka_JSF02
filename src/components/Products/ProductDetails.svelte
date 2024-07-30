@@ -95,7 +95,7 @@
   }
 </script>
 
-<div class="grid justify-center">
+<div class="grid justify-center gap-9">
   <div class="mb-4">
     <select on:change={handleCategoryChange} class="p-2 border rounded">
       {#each categories as category}
@@ -116,12 +116,13 @@
     </select>
   </div>
 
-  <ul class="lg:max-h-[130rem] max-w-xl mx-auto grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 items-center lg:max-w-none my-4">
+  <ul class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {#each $products as product (product.id)}
       <li 
         class="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden"
         on:click={() => clickedProduct(product)}
       >
+      <div class="h-48 w-full flex items-center justify-center bg-gray-100">
         <img src={product.image} alt={product.title} class="object-contain h-48 mt-3" />
 
         <div class="flex-1 flex flex-col p-6">

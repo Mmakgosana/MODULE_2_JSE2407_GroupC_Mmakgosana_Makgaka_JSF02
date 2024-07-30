@@ -1,7 +1,7 @@
 <script>
   //import { onMount } from 'svelte';
   import Ratings from './Ratings.svelte';
-  //import { navigate } from 'svelte-routing';
+  import { navigate } from 'svelte-routing';
 
   //Exporting properties that can be passed from a parent component
   export let id;
@@ -24,7 +24,7 @@
 <!--Main container for the product card-->
 <div
   on:click={handleClick}
-  class="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden"
+  class="flex bg flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden"
 >
   <img class="object-contain h-48 mt-3" src={image} alt="Product Image" />
 
