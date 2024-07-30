@@ -35,3 +35,14 @@ let products = writable([]);
       searchProducts();
     }
   };
+
+const sortProducts = () => {
+  if ($sorting !== "default") {
+    products.update(items => items.sort((a, b) =>
+      $sorting === "low" ? a.price - b.price : b.price - a.price
+    ));
+  } else {
+    products.set(JSON.parse(JSON.stringify(originalProducts)));
+  }
+};
+
