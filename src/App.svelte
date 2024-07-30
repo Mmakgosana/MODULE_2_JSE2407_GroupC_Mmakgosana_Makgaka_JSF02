@@ -1,5 +1,5 @@
 <script>
-    // import { Router, Route } from "svelte-routing";
+     import { Router, Route, Link } from "svelte-routing";
     // import Home from "./routes/Home.svelte";
     import Header from './components/Header.svelte'
     import Layout from './components/Layout.svelte'
@@ -8,8 +8,8 @@
     import CardSkeleton from './components/Products/CardSkeleton.svelte';
     //import ProductCard from './components/Products/ProductCard.svelte';
     //import ProductDetails from './components/Products/ProductDetails.svelte';
-    import Ratings from './components/Ratings.svelte'
-
+    import productStore from './components/ProductStore.svelte'
+    import ProductDetails from './components/Products/ProductDetails.svelte'
     
     
     // export let url = "";
@@ -29,6 +29,8 @@
 <Sort />
 <Layout />
 <CardSkeleton />
+<ProductDetails/>
+
 
 
 
