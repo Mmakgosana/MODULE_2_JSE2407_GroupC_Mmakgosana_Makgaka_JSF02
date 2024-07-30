@@ -157,4 +157,24 @@ $: sortProducts();
   </ul>
 </div>
 
+{#if selectedProduct}
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg max-w-2xl w-full">
+      <h2 class="text-2xl font-bold mb-4">{selectedProduct.title}</h2>
+      <img src={selectedProduct.image} alt={selectedProduct.title} class="w-1/2 mx-auto mb-4" />
+      <p class="mb-2"><strong>Price:</strong> R{selectedProduct.price}</p>
+      <p class="mb-2"><strong>Category:</strong> {selectedProduct.category}</p>
+      <p class="mb-2"><strong>Rating:</strong> {selectedProduct.rating.rate} ({selectedProduct.rating.count} reviews)</p>
+      <p class="mb-4">{selectedProduct.description}</p>
+      <button 
+        on:click={closeProductDetails}
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+{/if}
+
+
 
